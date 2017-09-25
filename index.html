@@ -13,7 +13,7 @@ html, body, #map { height: 100%; margin: 0; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
 <script src="https://cdn.rawgit.com/tyrasd/osmtogeojson/2.2.5/osmtogeojson.js"></script>
 <script>
-var api = 'http://overpass-api.de/api/interpreter?data=';
+var api = 'http://overpass-api.de/api/interpreter';
 var query = 'way["building"](55.950,-3.200,55.955,-3.190);out body;>;out skel qt;';
 var map = L.map('map');
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -43,7 +43,7 @@ var width = 600,
         .projection(projection);
 
 
-	d3.json("api"+"query", function(json) { // loads JSON file
+	d3.json("api"+'?data='+"query", function(json) { // loads JSON file
 	  svg.selectAll("path") // selects path elements, will make them if they don't exist
 	   .data(osmtogeojson(json).feature) // iterates over geo feature
 	   .enter() // adds feature if it doesn't exist as an element
