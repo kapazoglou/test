@@ -43,7 +43,7 @@ var width = 600,
         .projection(projection);
 
 
-	d3.json("api"+'?data='+"query", function(json) { // loads JSON file
+	d3.json( api +'?data='+ query, function(json) { // loads JSON file
 	  svg.selectAll("path") // selects path elements, will make them if they don't exist
 	   .data(osmtogeojson(json).feature) // iterates over geo feature
 	   .enter() // adds feature if it doesn't exist as an element
