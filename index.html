@@ -16,14 +16,12 @@ html, body, #map { height: 100%; margin: 0; }
 var api = 'https://overpass-api.de/api/interpreter';
 var query = 'way["building"](55.950,-3.200,55.955,-3.190);out body;>;out skel qt;';
 var map = L.map('map');
-L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+
+
 $.get(api, {data: query}, function(resp) {
   var geojson = osmtogeojson(resp);
   var layer = L.geoJson(geojson).addTo(map);
   map.fitBounds(layer.getBounds());
-  console.log(geojson)
 
 });
 
@@ -43,9 +41,13 @@ var width = 600,
         .projection(projection);
 
 
-	d3.json( api +'?data='+ query, function(json) { // loads JSON file
+	d3.json( "https://overpass-api.de/api/interpreter?data=way[%22building%22](55.950,-3.200,55.955,-3.190);out%20body;%3E;out%20skel%20qt;", function(json) { 
+	var geojsn = osmtogeojson(json) // loads JSON file
+
+    console.log(geojsn)
+
 	  svg.selectAll("path") // selects path elements, will make them if they don't exist
-	   .data(osmtogeojson(json).feature) // iterates over geo feature
+	   .data(geojsn.feature) // iterates over geo feature
 	   .enter() // adds feature if it doesn't exist as an element
 	   .append("path") // defines element as a path
 	   .attr("d", path) // path generator translates geo data to SVG
