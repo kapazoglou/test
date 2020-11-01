@@ -1,5 +1,5 @@
-$ dig www.kapazoglou.com +nostats +nocomments +nocmd
-    > ;www.kapazoglou.com.                     IN      A
-    > www.kapazoglou.com.              3592    IN      CNAME  kapazoglou.github.io.
-    > kapazoglou.github.io.      43192   IN      CNAME    GITHUB-PAGES-SERVER .
+$ dig KAPAZOGLOU.COM +nostats +nocomments +nocmd
+    > ;KAPAZOGLOU.COM.                     IN      A
+    > KAPAZOGLOU.COM.              3592    IN      CNAME  KAPAZOGLOU.github.io.
+    > KAPAZOGLOU.github.io.      43192   IN      CNAME    GITHUB-PAGES-SERVER .
     >  GITHUB-PAGES-SERVER .         22      IN      A       192.0.2.1
